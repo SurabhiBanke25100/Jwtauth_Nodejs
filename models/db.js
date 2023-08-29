@@ -2,12 +2,8 @@ const { DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../connect');
 
 
-const User = sequelize.define('entries', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
+const User = sequelize.define('logups', {
+
 
     user_name: {
         type: DataTypes.STRING,
@@ -22,10 +18,6 @@ const User = sequelize.define('entries', {
     password: {
         type: DataTypes.STRING
 
-    },
-
-    confirm_password: {
-        type: DataTypes.STRING
     }
 
 });

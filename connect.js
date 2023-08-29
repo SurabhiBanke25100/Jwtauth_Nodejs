@@ -6,16 +6,15 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
     dialect: 'mysql',
 });
 
-// Test the connection
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Connected to MySQL database');
-    })
-    .catch((err) => {
-        console.error('Error connecting to MySQL:', err);
-    });
 
+// Sync the model with the database
+sequelize.sync()
+    .then(() => {
+        console.log('Database synced');
+    })
+    .catch(err => {
+        console.error('Error syncing database:', err);
+    });
 
 
 module.exports = sequelize;

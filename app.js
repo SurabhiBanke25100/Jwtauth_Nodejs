@@ -1,22 +1,19 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const mysql = require("mysql2");
-const port = 5000;
+const port = 8000;
+//const Usercontroller = require("./Controller/usercontroller");
+const { Sequelize, logups } = require("./models/db");
+const useroute = require("./routes/useroute");
 
-const Usercontroller = require("./Controller/usercontroller");
-
-const { Sequelize, entries } = require("./models/db");
-
-//middleware 
+// Middleware 
 app.use(express.json());
-
-//cross policy
 app.use(cors());
 
-app.post('/users', Usercontroller.Register);
+app.use('/users', useroute);
 
 
+//server connection
 app.listen(port, () => {
-    console.log(`server connected at port :${port}`);
-})
+    console.log(`Server connected at port: ${port}`);
+});
